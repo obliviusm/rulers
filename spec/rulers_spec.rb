@@ -1,5 +1,10 @@
-
 class TestApp < Rulers::Application; end
+
+class TestController < Rulers::Controller
+  def action
+    'Hello, world'
+  end
+end
 
 RSpec.describe Rulers do
   def app
@@ -11,9 +16,8 @@ RSpec.describe Rulers do
   end
 
   it "responds to " do
-    response = get '/'
+    response = get '/test/action'
     expect(response).to be_ok
     expect(response.body).to include('Hello')
-
   end
 end
