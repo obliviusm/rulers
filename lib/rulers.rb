@@ -7,7 +7,7 @@ module Rulers
       [
         200,
         {'Content-Type' => 'text/html'},
-        klass.new(env).send(action)
+        [klass.new(env).send(action)]
       ]
     end
 
