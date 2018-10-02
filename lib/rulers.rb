@@ -14,6 +14,12 @@ module Rulers
         {'Content-Type' => 'text/html'},
         [klass.new(env).send(action)]
       ]
+    rescue
+      [
+        500,
+        {'Content-Type' => 'text/html'},
+        ['Internal error']
+      ]
     end
   end
 
