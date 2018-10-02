@@ -4,16 +4,21 @@ require "rulers/routing"
 module Rulers
   class Application
     def call(env)
-      if env['PATH_INFO'] == '/favicon.ico'
+      case env['PATH_INFO']
+      when '/favicon.ico'
         return [404, {'Content-Type' => 'text/html'}, []]
-      end
-
-      if env['PATH_INFO'] == '/'
+      when '/'
         # env['PATH_INFO'] = '/quote/show'
         return [
           200,
           {'Content-Type' => 'text/html'},
           [`cat ./public/index.html`]
+        ]
+      when '/redirect'
+        return [
+          301,
+          {'Location' => '/quote/show'},
+          []
         ]
       end
 
