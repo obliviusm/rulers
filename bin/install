@@ -12,6 +12,9 @@ def system!(*args)
 end
 
 chdir APP_ROOT do
+  # only add new files, not modified
+  system('git add $(git ls-files -o --exclude-standard)')
+
   system!('gem build rulers.gemspec')
   system!("gem install rulers-#{Rulers::VERSION}.gem")
 end
