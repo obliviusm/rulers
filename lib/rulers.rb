@@ -2,6 +2,8 @@ require "rulers/version"
 require "rulers/routing"
 require "rulers/util"
 require "rulers/dependencies"
+require "rulers/controller"
+require 'erubis'
 
 module Rulers
   class Application
@@ -36,12 +38,6 @@ module Rulers
     #     {'Content-Type' => 'text/html'},
     #     ['Internal error']
     #   ]
-    end
-  end
-
-  class Controller
-    def initialize(env)
-      @env = env
     end
   end
 end
