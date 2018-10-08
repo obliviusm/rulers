@@ -1,14 +1,8 @@
-class TestApp < Rulers::Application; end
-
-class TestController < Rulers::Controller
-  def action
-    'Hello, world'
-  end
-end
+require_relative './dummy/config/application.rb'
 
 RSpec.describe Rulers do
   def app
-    TestApp.new
+    Dummy::Application.new
   end
 
   it "has a version number" do
@@ -16,8 +10,8 @@ RSpec.describe Rulers do
   end
 
   it "responds to " do
-    response = get '/test/action'
+    response = get '/quote/show'
     expect(response).to be_ok
-    expect(response.body).to include('Hello')
+    expect(response.body).to include('There is nothing')
   end
 end
